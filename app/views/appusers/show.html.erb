@@ -1,0 +1,26 @@
+<br>
+<h1 align="center"><%= @user.name.capitalize %>'s profile</h1>
+<hr />
+<br><br>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4 center" style="padding-left: 600px;">
+		<%= gravatar_for @user, size: 150, class:"circle" %>
+	</div>
+	<div class="col-md-8 well" style="padding-left: 100px;">
+		<h2>Type: <%= @user.user_type %> </h2>
+	</div>
+	<div class="col-md-8 well" style=" padding-left: 100px;">
+		<div class="recipe-actions ">
+			<% if can? :edit, Appuser %>
+				<% if current_appuser==@user %>
+					<%= link_to "Edit Profile", edit_appuser_path(@user), class: "btn btn-xs btn-warning " %>
+				<% end %>
+			<% elsif can? :delete, Appuser %>		
+				<%= link_to "Delete Profile", appuser_path(@user), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure you want to delete this recipe?"} %>
+			<% end %>
+			<%= link_to "Return to Users list", appusers_path, class: "btn btn-xs btn-primary" %>
+		</div>
+	</div>
+</div>
+<br>
+<hr />

@@ -1,0 +1,37 @@
+<br><br>
+<div class="row">
+
+  <div class="col-md-12" style="padding-left: 300px">
+  <%= form_for(@project, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+
+    <div class="form-group" >
+      <div class="control-label col-md-2">
+        <%=f.label :name %>
+      </div>
+      <div class="col-md-8">
+        <%= f.text_field :name, class: "form-control", placeholder: "Enter Your Name", autofocus: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="control-label col-md-2">
+        <%= f.label :description %>
+      </div>
+      <div class="col-md-8">
+        <%= f.text_field :description,rows: 10, class: "form-control",placeholder: "Enter Email" %>
+      </div>
+    </div>
+    <% if @project.new_record? %>
+      <%= f.select_tag "appusers[]", options_for_select(Appuser.all.map {|k, v| [k.name+"  "+k.user_type, k.id]}),{:multiple => :multiple, :size => 10}  %>
+    <% end %>
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <%= f.submit(@project.new_record? ? "Create my account" : "Update", class: "btn btn-primary btn-lg btn-xlarge") %>
+      </div>
+    </div>
+  <% end %>
+  <div class="colormatch" style="padding-left: 15px">
+    [ <%= link_to "Cancel request and return to recipes listing", projects_path %> ]
+  </div>
+  <br><br><br><br>
+  </div>
+</div>

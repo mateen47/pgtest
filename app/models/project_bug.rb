@@ -1,0 +1,3 @@
+class ProjectBug < ApplicationRecord
+
+end

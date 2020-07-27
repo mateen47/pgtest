@@ -1,0 +1,45 @@
+ <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Project Manager</h4>
+              <ul class="list-unstyled">
+                <% if can? :read, Project %>
+                  <li><%= link_to "projects", projects_path %> </li>
+                <% end %>
+                <% if can? :create, Project %>
+                  <li><%= link_to "new Project", new_project_path %> </li>
+                <% end %>
+                <% if can? :read, Bug %>
+                  <li><%= link_to "bugs", bugs_path %> </li>
+                <% end %>
+                <li><a href="#" class="text-white">Email me</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <% if current_appuser %>
+            <%= link_to gravatar_for(current_appuser, size: 45),new_appuser_registration_path %>
+            <strong style="color:#fff;"><%= link_to current_appuser.name.capitalize,appuser_path(current_appuser),style:"color:#fff;" %></strong>
+          <% end %>
+          <strong><%= link_to "Users", appusers_path, class: "navbar-brand d-flex align-items-center" %></strong>
+          <% if current_appuser %>
+            <%= link_to "Log out", destroy_appuser_session_path, method: :delete, style: "color:#fff;padding-left: 700px;", class: "navbar-brand d-flex align-items-center" %>
+          <% else %>
+            <%= link_to "Sign up", new_appuser_registration_path, class: "navbar-brand d-flex align-items-center",style: "color:#fff;padding-left: 700px;" %>
+            <%= link_to "Log In", new_appuser_session_path, class: "navbar-brand d-flex align-items-center" %>
+          <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>

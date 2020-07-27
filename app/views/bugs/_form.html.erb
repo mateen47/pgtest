@@ -1,0 +1,59 @@
+<br><br>
+<div class="row">
+
+  <div class="col-md-12" style="padding-left: 300px">
+  <%= form_for(@bug, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+
+    <div class="form-group" >
+      <div class="control-label col-md-2">
+        <%=f.label :title %>
+      </div>
+      <div class="col-md-8">
+        <%= f.text_field :title, class: "form-control", placeholder: "Enter Your Name", autofocus: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="control-label col-md-2">
+        <%= f.label :description %>
+      </div>
+      <div class="col-md-8">
+        <%= f.text_field :description,rows: 10, class: "form-control",placeholder: "Enter Email" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="control-label col-md-2">
+        <%= f.label :deadline,"Enter days " %>
+      </div>
+      <div class="col-md-8">
+        <%= f.number_field :deadline, class: "form-control",placeholder: "0" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="control-label col-md-8">
+        <%= f.label :bug_type, "select type" %>
+      </div>
+      <div class="col-md-8" >
+        <%= f.select :bug_type, options_for_select([["Bug", "bug"], ["Feature", "feature"]]) %>
+      </div>      
+    </div>
+    <div class="form-group">
+      <div class="control-label col-md-8">
+        <%= f.label :status, "select type" %>
+      </div>
+      <div class="col-md-8" >
+        <%= f.select :status, options_for_select([["New", "zero"], ["Started", "started"], ["Completed", "completed"], ["Resolved", "resolved"]]) %>      
+      </div>      
+    </div>
+    
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <%= f.submit(@bug.new_record? ? "Create bug" : "Update bug", class: "btn btn-primary btn-lg btn-xlarge") %>
+      </div>
+    </div>
+  <% end %>
+  <div class="colormatch" style="padding-left: 15px">
+    [ <%= link_to "Cancel request and return to bugs listing", bugs_path %> ]
+  </div>
+  <br><br><br><br>
+  </div>
+</div>
