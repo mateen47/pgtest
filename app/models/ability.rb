@@ -20,8 +20,7 @@ class Ability
       end
       if user.user_type == 'manager'
         can :delete, Appuser
-        can :selectproject, Appuser
-        can :addproject, Appuser
+        
         can :edit, Appuser
       elsif user.id != nil
         can :edit, Appuser
