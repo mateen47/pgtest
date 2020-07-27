@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.6'
 gem 'cancancan'
 gem 'devise'
-gem 'paperclip', '~> 4.2'
+gem 'paperclip', '~> 6.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
